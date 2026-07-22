@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>応募要項 ｜ Fuji Tour Guide Recruit</title>
+<style>
+  :root{
+    --bg:#f4f9fc;
+    --bg-soft:#e7f1f8;
+    --ink:#233746;
+    --muted:#6c8296;
+    --line:#d3e3ee;
+    --accent:#4f97c4;
+    --accent-deep:#2f6f9c;
+    --sky:#7fa9c9;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Yu Gothic","Hiragino Kaku Gothic ProN",-apple-system,"Segoe UI",sans-serif;
+    color:var(--ink);line-height:2;background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:"Yu Mincho","Hiragino Mincho ProN","Times New Roman",Georgia,serif;}
+  a{color:inherit;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 28px;}
+  .narrow{max-width:780px;}
+
+  /* Top bar */
+  .topbar{
+    position:sticky;top:0;z-index:60;
+    background:rgba(251,248,243,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:center;padding:16px 28px;
+  }
+  .logo{font-family:"Times New Roman",Georgia,serif;font-size:20px;letter-spacing:.22em;color:var(--ink);font-weight:600;text-decoration:none;}
+  .logo b{color:var(--accent);font-weight:600;}
+  .back{font-family:"Times New Roman",serif;font-size:12px;letter-spacing:.14em;color:var(--muted);text-decoration:none;padding:4px 10px;transition:.2s;}
+  .back:hover{color:var(--ink);border-bottom:1px solid var(--accent);}
+
+  /* Header band */
+  .pagehead{
+    text-align:center;padding:96px 28px 70px;
+    background:radial-gradient(120% 90% at 50% 0%, #ffffff 0%, var(--bg) 55%, var(--bg-soft) 100%);
+    position:relative;
+  }
+  .kicker{font-size:12px;letter-spacing:.34em;font-weight:600;color:var(--accent-deep);text-transform:uppercase;margin-bottom:18px;}
+  .pagehead h1{font-size:40px;letter-spacing:.06em;font-weight:600;}
+  .pagehead .sub{font-size:.42em;letter-spacing:.3em;color:var(--muted);margin-top:12px;font-weight:400;display:block;}
+  .mtn{width:100%;height:70px;display:block;position:absolute;left:0;bottom:-1px;}
+
+  /* Sections */
+  section{padding:64px 28px;}
+  .eyebrow{font-size:12px;letter-spacing:.3em;font-weight:600;color:var(--accent-deep);text-transform:uppercase;margin-bottom:14px;display:block;}
+  h2.serif{font-size:26px;letter-spacing:.05em;margin-bottom:26px;font-weight:600;}
+  h3{font-size:16px;letter-spacing:.06em;color:var(--accent-deep);margin:0 0 6px;font-weight:600;}
+  p{font-size:15.5px;color:var(--ink);}
+  .muted{color:var(--muted);}
+
+  .block{margin-bottom:34px;padding-bottom:30px;border-bottom:1px solid var(--line);}
+  .block:last-child{border-bottom:none;}
+
+  /* skill lists */
+  ul.dash{list-style:none;margin:8px 0 0;}
+  ul.dash li{position:relative;padding:2px 0 2px 22px;font-size:15.5px;}
+  ul.dash li::before{content:"\2014";position:absolute;left:0;top:2px;color:var(--accent);}
+
+  /* flow steps */
+  ol.flow{list-style:none;counter-reset:step;margin-top:8px;}
+  ol.flow li{position:relative;padding:0 0 26px 54px;counter-increment:step;}
+  ol.flow li::before{
+    content:counter(step);position:absolute;left:0;top:0;
+    width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-family:"Times New Roman",serif;font-size:16px;
+  }
+  ol.flow li::after{content:"";position:absolute;left:16px;top:38px;bottom:6px;width:1px;background:var(--line);}
+  ol.flow li:last-child::after{display:none;}
+  ol.flow strong{display:block;font-size:16px;margin-bottom:2px;}
+
+  /* pay cards */
+  .pay{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px;}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:24px 26px;}
+  .card .tag{font-family:"Times New Roman",serif;font-size:13px;letter-spacing:.14em;color:var(--accent-deep);text-transform:uppercase;margin-bottom:12px;}
+  .card .row{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px dashed var(--line);}
+  .card .row:last-child{border-bottom:none;}
+  .card .row .amt{font-family:"Times New Roman",serif;font-size:19px;color:var(--ink);}
+  .note{color:var(--muted);font-size:13.5px;margin-top:14px;letter-spacing:.02em;}
+
+  /* CTA */
+  .cta{
+    text-align:center;padding:74px 28px;
+    background:radial-gradient(120% 100% at 50% 100%, #ffffff 0%, var(--bg) 60%);
+  }
+  .cta h2{font-size:26px;letter-spacing:.08em;margin-bottom:18px;}
+  .cta p{color:var(--muted);max-width:520px;margin:0 auto 30px;}
+  .btn{
+    display:inline-block;font-family:"Times New Roman",serif;font-size:14px;letter-spacing:.14em;
+    text-decoration:none;padding:15px 40px;border-radius:40px;background:var(--accent);color:#fff;
+    border:1px solid var(--accent);transition:.2s;
+  }
+  .btn:hover{background:var(--accent-deep);border-color:var(--accent-deep);}
+
+  /* about */
+  .about{background:var(--bg-soft);padding:56px 28px;}
+  .about-row{display:flex;gap:16px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px;}
+  .about-row:last-of-type{border-bottom:none;}
+  .about-row b{color:var(--accent-deep);min-width:96px;font-weight:600;font-size:13px;letter-spacing:.08em;padding-top:2px;}
+  .about-row a{color:var(--ink);}
+  .links{margin-top:22px;}
+  .links a{display:inline-block;margin:0 26px 12px 0;color:var(--ink);text-decoration:none;font-size:14px;letter-spacing:.06em;border-bottom:1px solid var(--accent);padding-bottom:3px;}
+  .links a:hover{color:var(--accent-deep);}
+
+  footer{text-align:center;padding:34px;color:var(--muted);font-size:12px;letter-spacing:.1em;}
+
+  @media(max-width:640px){
+    .pagehead h1{font-size:30px;}
+    .pay{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="logo" href="index.html">FUJI <b>TOUR</b></a>
+  <a class="back" href="index.html">&larr; BACK</a>
+</div>
+
+<div class="pagehead">
+  <div class="kicker">Requirement &amp; Conditions</div>
+  <h1 class="serif">応募要項<span class="sub">REQUIREMENT AND CONDITIONS</span></h1>
+  <svg class="mtn" viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#f4f9fc" d="M0,110 L560,26 L618,52 L700,14 L782,52 L840,26 L1440,110 Z"/>
+    <path fill="#ffffff" opacity="0.55" d="M0,110 L618,52 L700,34 L782,52 L1440,110 Z"/>
+  </svg>
+</div>
+
+<section class="wrap narrow">
+  <span class="eyebrow">Conditions</span>
+  <h2 class="serif">募集条件</h2>
+
+  <div class="block">
+    <h3>年齢・性別・経験</h3>
+    <p>18歳以上の方であれば、経験や経歴は問いません。現在、大学生から社会人まで幅広く在籍しています。<strong>東京へ通える方のみ採用中</strong>です。</p>
+  </div>
+
+  <div class="block">
+    <h3>出勤日</h3>
+    <p>ツアー予約が入り次第、先着順でエントリーしていただきます。学生の方も社会人の方も、ライフスタイルに合わせて出勤が可能です。</p>
+  </div>
+
+  <div class="block">
+    <h3>必須スキル</h3>
+    <ul class="dash">
+      <li>日常会話が可能な英語力</li>
+      <li>ゲストと積極的に交流し、一緒にツアーを楽しめるフレンドリーな姿勢</li>
+      <li>日本の文化や魅力を伝えることにワクワクする方</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h3>歓迎スキル</h3>
+    <ul class="dash">
+      <li>海外留学経験</li>
+      <li>TOEIC 750点以上 ／ 英検2級以上</li>
+    </ul>
+    <p class="note">※もちろん未経験の方も大歓迎です！！</p>
+  </div>
+</section>
+
+<section class="wrap narrow" style="padding-top:20px;">
+  <span class="eyebrow">Process</span>
+  <h2 class="serif">採用までの流れ</h2>
+  <ol class="flow">
+    <li>
+      <strong>オンライン面談</strong>
+      <p class="muted">英語と日本語で行います。軽いロールプレイを含みますので、あらかじめご承知おきください。結果は1週間以内にメールで通知します。</p>
+    </li>
+    <li>
+      <strong>実地テスト</strong>
+      <p class="muted">既存ガイドのツアーに同行していただきます。交通費や報酬は発生しませんが、体験費用は全額会社負担です。</p>
+    </li>
+    <li>
+      <strong>最終結果通知</strong>
+      <p class="muted">実地テスト後、1週間以内にメールでご連絡します。</p>
+    </li>
+  </ol>
+</section>
+
+<section class="wrap narrow" style="padding-top:20px;">
+  <span class="eyebrow">Reward</span>
+  <h2 class="serif">報酬</h2>
+  <div class="pay">
+    <div class="card">
+      <div class="tag">Normal Tour</div>
+      <div class="row"><span>1ツアーあたり</span><span class="amt">¥5,000</span></div>
+      <p class="note">※ツアー所要時間：2〜3時間（ツアーによって変動）</p>
+    </div>
+    <div class="card">
+      <div class="tag">Private Tour</div>
+      <div class="row"><span>4時間</span><span class="amt">¥7,000</span></div>
+      <div class="row"><span>6時間</span><span class="amt">¥10,000</span></div>
+      <div class="row"><span>8時間</span><span class="amt">¥14,000</span></div>
+    </div>
+  </div>
+  <p class="note">※ミニ手当＋チップ制度あり。</p>
+  <p class="note">※当社ガイドのお仕事は、アルバイト雇用ではなく<strong>業務委託契約</strong>となります。そのため、交通費の支給や社会保険の加入はありません。ツアー単位で報酬をお支払いします。</p>
+  <p class="note">※月末締め、翌月支払い。銀行振込となります。</p>
+</section>
+
+<div class="cta">
+  <h2 class="serif">皆様からのご応募、<br>心よりお待ちしております。</h2>
+  <p>下記フォームよりお気軽にご応募ください。</p>
+  <a class="btn" href="https://forms.gle/tiQdpaDozANNjZvNA" target="_blank" rel="noopener">応募フォームはこちら</a>
+</div>
+
+<div class="about">
+  <div class="wrap narrow">
+    <span class="eyebrow">Company</span>
+    <div class="about-row"><b>会社名</b><span><a href="https://aiconsulting.co.jp/" target="_blank" rel="noopener">株式会社 A.I Consulting</a></span></div>
+    <div class="about-row"><b>事業名</b><span>Fuji Tour</span></div>
+    <div class="about-row"><b>代表者</b><span>今村 桜子</span></div>
+    <div class="links">
+      <a href="https://fujitour.jp/" target="_blank" rel="noopener">Website</a>
+      <a href="https://www.instagram.com/fuji_tour_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 Fuji Tour — A.I Consulting Co., Ltd.</footer>
+
+</body>
+</html>
